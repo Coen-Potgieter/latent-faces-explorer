@@ -67,12 +67,12 @@ Built using TensorFlow for the model and Pygame for the interface, it enables tw
 
 Autoencoders, unlike GANs, are fundamentally **reconstructive**, not **generative**. This means they're optimized for *accuracy*, not *sharpness*. More specifically:
 
-- The latent space is trained to follow a **normal distribution**.
-- This means that assumptions are made on the latent variables that may not necessarily hold.
+- This is a plain (deterministic) autoencoder trained to minimise reconstruction error (MSE). It is not a variational autoencoder, so the latent space is not constrained to follow any particular distribution.
+- As a result, the latent space has no guaranteed structure: some regions of it may never be seen during training, and moving a slider into such a region can produce odd or distorted faces.
 - Additionally, when decoding there's no adversarial pressure to produce *photo-realistic* sharpness.
-- As a result, the output tends to reflect the *average* interpretation of features — leading to *blurry or smoothed faces*.
+- Because the model minimises average pixel error, the output tends to reflect the *average* interpretation of features, leading to *blurry or smoothed faces*.
 
-This isn't a bug. It's a consequence of the design — and part of why GANs were created and why I will be exploring that next.
+This isn't a bug. It's a consequence of the design, and part of why GANs were created and why I will be exploring that next.
 
 ## Mac OS Setup 💻
 
